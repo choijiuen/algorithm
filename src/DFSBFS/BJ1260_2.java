@@ -14,9 +14,9 @@ public class BJ1260_2 {
 	static int[][] map;
 	static boolean[] isVisit;
 	
-	public static void DFS(int node){
-		isVisit[node] = true;
-		System.out.print(node+" ");
+	public static void DFS(int node){	//재귀호출
+		isVisit[node] = true;			//방문한 정점을
+		System.out.print(node+" ");		//호출,출력
 		
 		//현재 정점에서 방문하지 않은 정점이 있다면 해당 점으로 이동
 		//재귀
@@ -29,6 +29,7 @@ public class BJ1260_2 {
 	
 	public static void BFS(int node){
 		Queue<Integer> queue = new LinkedList<>();
+		
 		//큐에 시작점을 추가
 		queue.add(node);
 		isVisit[node] =true;
@@ -47,9 +48,18 @@ public class BJ1260_2 {
 			System.out.print(now + " ");
 		}
 	}
+	
+//	- 사용자가 지정하는 구분자를 경계로 하여 문자열을 나눠주는 Class.
+//	- 만약 사용자가 구분자 지정을 생략하면 공백이나 탭이 기본 구분자로 사용된다.
+//	- StringTokenizer 클래스 생성자의 3번째 인수로 구분자를 토큰에 포함할지의 여부를 지정할 수 있다. 
+//	- 3번째 인수 생략시(false) 구분자는 토큰에 포함되지 않지만, 3번째 인수에 true를 입력하면 구분자도 토큰으로 취급한다.
+//	- StringTokenizer 클래스 생성자의 2번째 인수로 구분자를 여러개 지정할 수 있다
+	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+//		StringTokenizer 클래스 객체에서 다음 토큰을 읽어 들인다.
 		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
