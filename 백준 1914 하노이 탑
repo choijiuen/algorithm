@@ -1,0 +1,40 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+
+public class BJ_1914 {
+
+public static void main(String[] args) throws NumberFormatException, IOException {
+    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+
+    int N = Integer.parseInt(br.readLine());
+     BigInteger result=new BigInteger("1");    //result에 1저장 
+        if(N==1) System.out.println(1);
+        else {
+            for(int i=0;i<N;i++) {
+                result=result.multiply(new BigInteger("2"));
+            }
+            result=result.subtract(new BigInteger("1")); //하노이 옮기 수는 2^n-1 이기 때문에 
+            System.out.println(result);
+        }
+        if(N<=20) {
+            hanoi(N,'1','2','3');
+        }
+
+
+}
+
+private static void hanoi(int N, char from, char aux, char to) {
+    if(N==1) {
+        System.out.println(from+" "+to);
+    }else {
+        hanoi(N-1,from,to,aux);
+        System.out.println(from+" "+to);
+        hanoi(N-1,aux,from,to);
+    }
+
+
+
+}
+}
