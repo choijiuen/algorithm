@@ -1,0 +1,62 @@
+package algo;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BJ_6603 {
+
+static int visited[] ;
+static int count=0;
+static int k=1;
+static int number[];
+
+public static void main(String[] args) throws IOException {
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+  StringTokenizer st;
+
+  while(k != 0) {
+     st = new StringTokenizer(br.readLine());
+     k = Integer.parseInt(st.nextToken());
+     visited = new int[k];
+     number = new int [k];
+
+     for(int i=0; i<k; i++) {
+
+        number[i] = Integer.parseInt(st.nextToken());//로또 숫자들 
+
+     }
+
+     DFS(0,0);
+
+     System.out.println(); //TC 끝나면 한 칸 띄기 
+
+  }
+}
+
+private static void DFS(int start, int depth) {
+
+  if(depth == 6) { //6번 방문했으면 
+     for(int i=0; i<k; i++) { //0~k 반복
+        if(visited[i] == 1) { //  0~5까지 방문 했음 
+           //
+           System.out.print(number[i] +" "); // 0~5 출력해줌 
+        }
+     }
+     System.out.println();
+
+  }
+
+
+
+  for(int i=start; i<k; i++) {
+     visited[i] =1; //방문 한 번 할 때마다 
+     DFS(i+1,depth+1); //start랑 depth 1씩 증가 
+
+     visited[i] = 0; //DFS(6,6) 실행후 출력해주고 , visited[5] =0 으로 
+  }
+}
+
+}
