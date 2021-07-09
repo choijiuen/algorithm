@@ -1,0 +1,57 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.StringTokenizer;
+
+public class BJ_2210 {
+static int dx[] = {1,-1,0,0};
+static int dy[] = {0,0,1,-1};
+static int map[][];
+static HashSet list ;
+
+public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st;
+
+    map = new int[5][5];
+
+    list = new HashSet<String>(); //중복방지
+
+    for(int i=0; i<5; i++) {
+        st = new StringTokenizer(br.readLine());
+        for(int j=0; j<5; j++) {
+            map[i][j] = Integer.parseInt(st.nextToken());
+
+        }
+    }
+    String s = new String();
+    for(int i=0; i<5; i++) {
+        for(int j=0; j<5; j++) {
+            DFS(i,j,0,s);
+        }
+    }
+
+}
+
+private static void DFS(int x, int y, int depth, String s) {
+
+    if(depth == 6) { //길이 6이면 set에 넣고 종료
+        list.add(s); 
+// System.out.println(s);
+return;
+}
+for(int d=0; d<4; d++) {
+int nextX = x + dx[d];
+int nextY = y + dy[d];
+
+        if(nextX <0 || nextY <0 || nextX >=5 || nextY >=5 ) { //맵의 범위를 벗어날 때
+            continue;
+        }
+
+        DFS(nextX, nextY, depth+1, s+map[x][y]); 
+        //s는 0, 그담값 이 계속 저장 된다. 
+    }
+
+}
+}
