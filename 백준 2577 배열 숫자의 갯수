@@ -1,0 +1,106 @@
+package algo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class BJ2577 {
+
+public static void main(String[] args) throws NumberFormatException, IOException {
+BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+BufferedWriter bw = new BufferedWriter (new OutputStreamWriter(System.out));
+
+int A = Integer.parseInt(br.readLine());
+int B = Integer.parseInt(br.readLine());
+int C = Integer.parseInt(br.readLine());
+
+int result = A*B*C ;
+
+int N[] = new int [10]; // 0~9 까지 갯수 넣을 배열
+
+
+int rl = Integer.toString(result).length(); // length는 문자열의 총 길이 값을 반환한다.
+
+// System.out.println(rl);
+
+// for(int i=1; i<rl; i++) {
+// int ri = (int) (result / Math.pow(10,rl-i)); //제곱 값 구하는 함수
+//
+// N[i] =ri;
+//
+// System.out.println(N[i]);
+// }
+
+
+// System.out.println(result);
+// System.out.println(r1);
+// System.out.println(r2);
+// System.out.println(r3);
+//
+int r[] = new int [rl];
+int temp =0;
+int m =0;
+int s =0;
+
+for(int i=1; i<=rl; i++) {
+s = (int) Math.pow(10,rl-i);
+
+r[i-1] = result/s;
+
+result = result - (int) (Math.pow(10,rl-i)*r[i-1]);
+
+// System.out.println(r[i-1]);
+}
+//  r[0] = (int) (result / Math.pow(10,rl-1)); //제곱 값 구하는 함수
+//  r[1] = (int) ((result - Math.pow(10,rl-1)*r[0]) / Math.pow(10,rl-2)); //제곱 값 구하는 함수
+//  r[2] = (int) (((result - Math.pow(10,rl-1)*r[0]- (Math.pow(10,rl-2))*r[1]) / Math.pow(10,rl-3))); //제곱 값 구하는 함수
+
+ 
+// =================================================== 
+ 
+for(int i=0; i<rl; i++) {
+
+switch(r[i]) {
+
+case 0:
+N[0] = N[0]+1;
+break;
+case 1:
+N[1] = N[1]+1;
+break;
+case 2:
+N[2] = N[2]+1;
+break;
+case 3:
+N[3] = N[3]+1;
+break;
+case 4:
+N[4] = N[4]+1;
+break;
+case 5:
+N[5] = N[5]+1;
+break;
+case 6:
+N[6] = N[6]+1;
+break;
+case 7:
+N[7] = N[7]+1;
+break;
+case 8:
+N[8] = N[8]+1;
+break;
+case 9:
+N[9] = N[9]+1;
+break;
+}
+
+}
+
+for(int i=0; i<=9; i++) {
+System.out.println(N[i]);
+}
+}
+
+}
